@@ -107,4 +107,12 @@ public class StackBuilder : MonoBehaviour
 
         }
     }
+    public void Restack()
+    {
+
+        foreach (BlockInfo block in blocks)
+        {
+            block.ResetStack();
+        }
+    }
 }

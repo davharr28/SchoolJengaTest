@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button[] gradeBtn;
 
     [SerializeField] private Button testMyStackModeBtn;
+    [SerializeField] private Button resetStackBtn;
 
     [SerializeField] private GameObject blockInfo_Window;
     [SerializeField] private TextMeshProUGUI blockInfo_Line1Txt;
@@ -44,7 +45,7 @@ public class UIManager : MonoBehaviour
         }
 
         testMyStackModeBtn.onClick.AddListener(() => TestStackModeButtonClicked());
-       
+        resetStackBtn.onClick.AddListener(() => ResetStackButtonClicked());
     }
     private void OnDisable()
     {
@@ -54,6 +55,7 @@ public class UIManager : MonoBehaviour
         }
 
         testMyStackModeBtn.onClick.RemoveAllListeners();
+        resetStackBtn.onClick.RemoveAllListeners();
     }
 
     private void GradeButtonClicked(Transform stack)
@@ -66,7 +68,10 @@ public class UIManager : MonoBehaviour
     {
         currentStack.GetComponent<StackBuilder>().TestMyBlockMode();
     }
-   
+    private void ResetStackButtonClicked()
+    {
+        currentStack.GetComponent<StackBuilder>().Restack();
+    }
 
     public void DisplayBlockWindow(string grade, string domain, string cluster, string standardId, string standardDesc)
     {

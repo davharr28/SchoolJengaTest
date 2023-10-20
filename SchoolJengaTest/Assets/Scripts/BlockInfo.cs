@@ -17,12 +17,18 @@ public class BlockInfo : MonoBehaviour
     private Color32 currentColor;
     private Color hoverColor = Color.red;
 
+    private Rigidbody rb;
+    private Vector3 postion;
+    private Quaternion rotation;
 
     public void SetupBlock(SchoolTopic topic)
     {
         this.topic = topic;
+        rb = GetComponent<Rigidbody>();
         gameObject.name = this.topic.id.ToString();
         ChangeBlockMaterial(topic.mastery);
+        postion = this.transform.position;
+        rotation = this.transform.rotation;
     }
     private void ChangeBlockMaterial(int mastery)
     {
@@ -68,7 +74,18 @@ public class BlockInfo : MonoBehaviour
     {
         UIManager.Instance.DisplayBlockWindow(topic.grade, topic.domain, topic.cluster, topic.standardid, topic.standarddescription);
     }
+    public void ResetStack()
+    {
+        rb.Sleep();
 
+        if (mastery == 0)
+        {
+            gameObject.SetActive(true);
+        }
+
+        transform.position = postion;
+        transform.rotation = rotation;
+    }
 
 
 }
