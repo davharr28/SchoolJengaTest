@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 /// <summary>
 /// Build a stack of jenga 3 per roll
 /// </summary>
@@ -16,6 +17,9 @@ public class StackBuilder : MonoBehaviour
     [SerializeField] private float jengaBlockWidth = 2f;
     [SerializeField] private float jengaBlockWidthSpace = .5f;
     [SerializeField, ReadOnlyField] private float jengaBlockLength;
+
+    [Header("UI Variables")]
+    [SerializeField] private TextMeshPro gradeTitleTxt;
 
     private List<BlockInfo> blocks = new List<BlockInfo>();
     // Start is called before the first frame update
@@ -44,6 +48,7 @@ public class StackBuilder : MonoBehaviour
                 break;
         }
         gameObject.name = gradeIn;
+        gradeTitleTxt.text = gradeIn;
         SchoolAPI.Math.Grades[gradeIn].topics.Sort();
         BuildStack(SchoolAPI.Math.Grades[gradeIn].topics);
     }
@@ -88,6 +93,18 @@ public class StackBuilder : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    public void TestMyBlockMode()
+    {
+        foreach (BlockInfo block in blocks)
+        {
+            if (block.mastery == 0)
+            {
+                block.gameObject.SetActive(false);
+            }
+
         }
     }
 }

@@ -64,7 +64,12 @@ public class BlockInfo : MonoBehaviour
         }
     }
 
-    
+    public void DisplayInfo()
+    {
+        UIManager.Instance.DisplayBlockWindow(topic.grade, topic.domain, topic.cluster, topic.standardid, topic.standarddescription);
+    }
+
+
 
 }
 
