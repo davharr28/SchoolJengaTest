@@ -8,14 +8,16 @@ using UnityEngine;
 public class StackBuilder : MonoBehaviour
 {
     public GradeType grade = GradeType.sixth;
+    
+    [Header("Block Variables")]
     [SerializeField] private GameObject JengaBlock;
-
     [SerializeField] private float jengaBlockHeight = 1f;
     [SerializeField] private float jengaBlockHeightSpace = .02f;
     [SerializeField] private float jengaBlockWidth = 2f;
     [SerializeField] private float jengaBlockWidthSpace = .5f;
     [SerializeField, ReadOnlyField] private float jengaBlockLength;
 
+    private List<BlockInfo> blocks = new List<BlockInfo>();
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class StackBuilder : MonoBehaviour
         
         //ToDo:change with a unity event listner on the API
         //Give time to download the data
-       Invoke("SetupStackInfo",4f);
+       Invoke("SetupStackInfo",1f);
 
     }
 
@@ -64,6 +66,9 @@ public class StackBuilder : MonoBehaviour
             stack1Col++;
 
             GameObject block = Instantiate(JengaBlock, stack1CoorPlacement, stack1CoorRotation, transform);
+            BlockInfo blockInfo = block.GetComponent<BlockInfo>();
+            blockInfo.SetupBlock(topic);
+            blocks.Add(blockInfo);
 
             //set up the variables for a new row
             if (stack1Col == 3)

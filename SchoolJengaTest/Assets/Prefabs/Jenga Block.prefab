@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6505881016035803850}
+  - component: {fileID: 8795178799961752541}
   - component: {fileID: 9190154233951532397}
   - component: {fileID: 4081420543580259381}
   - component: {fileID: 1814708605911186593}
@@ -34,6 +35,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8795178799961752541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737793079363477604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fae1feb71f54c4da033b3fc1cc30db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mastery: 0
+  glassMat: {fileID: 2100000, guid: 35426e1658604e34884337bcbb982fab, type: 2}
+  woodMat: {fileID: 2100000, guid: c9f3679b10b62d14db7f84af6a3d148d, type: 2}
+  stoneMat: {fileID: 2100000, guid: 05c90fd0f6eb91a48bfd799e98b42d03, type: 2}
+  hit: {fileID: 0}
 --- !u!33 &9190154233951532397
 MeshFilter:
   m_ObjectHideFlags: 0
