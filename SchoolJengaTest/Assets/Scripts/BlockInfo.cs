@@ -20,7 +20,6 @@ public class BlockInfo : MonoBehaviour
     private Rigidbody rb;
     private Vector3 postion;
     private Quaternion rotation;
-
     public void SetupBlock(SchoolTopic topic)
     {
         this.topic = topic;

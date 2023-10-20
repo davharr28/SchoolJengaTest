@@ -13,14 +13,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform[] stacks;
     [SerializeField] private Button[] gradeBtn;
 
+    [Header("Game Mode buttons")]
     [SerializeField] private Button testMyStackModeBtn;
     [SerializeField] private Button resetStackBtn;
-
+    
+    [Header("Block Info window")]
     [SerializeField] private GameObject blockInfo_Window;
     [SerializeField] private TextMeshProUGUI blockInfo_Line1Txt;
     [SerializeField] private TextMeshProUGUI blockInfo_Line2Txt;
     [SerializeField] private TextMeshProUGUI blockInfo_Line3Txt;
+    
+    [Header("Sound")]
+    [SerializeField] private AudioClip clickSound;
 
+    private AudioSource uiSoundSystem;
     private Transform currentStack;
 
     private void Awake()
@@ -34,6 +40,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiSoundSystem = GetComponent<AudioSource>();
         currentStack = stacks[0];
     }
     private void OnEnable()
@@ -60,17 +67,24 @@ public class UIManager : MonoBehaviour
 
     private void GradeButtonClicked(Transform stack)
     {
+        ButtonSound();
         camControl.ChangeStack(stack);
         currentStack = stack;
     }
 
     private void TestStackModeButtonClicked()
     {
+        ButtonSound();
         currentStack.GetComponent<StackBuilder>().TestMyBlockMode();
     }
     private void ResetStackButtonClicked()
     {
+        ButtonSound();
         currentStack.GetComponent<StackBuilder>().Restack();
+    }
+    private void ButtonSound()
+    {
+        uiSoundSystem.PlayOneShot(clickSound);
     }
 
     public void DisplayBlockWindow(string grade, string domain, string cluster, string standardId, string standardDesc)
@@ -84,5 +98,7 @@ public class UIManager : MonoBehaviour
     {
         blockInfo_Window.SetActive(false);
     }
+
+
 }
 
